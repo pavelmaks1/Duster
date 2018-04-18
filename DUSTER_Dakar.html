@@ -1,0 +1,162 @@
+
+<script src="//live.renault.ru/landing-dakar/js/PostMessagerParent.js"></script>
+ 
+<script src="//live.renault.ru/landing-dakar/js/parentiframe.js"></script>
+ 
+<style>
+ 
+                .grid-row.bleed {
+ 
+                max-width: 100%!important;
+ 
+                }
+ 
+</style>
+ 
+<script>
+ 
+  
+ 
+  function iframeListener(data) {
+ 
+    var data =  JSON.parse(data.data);
+ 
+    if (data) {
+ 
+      switch(data.type) {
+ 
+          
+ 
+        case 'scrollparentwindow':
+ 
+          console.log('scrollToIframe', data);
+ 
+          var iframeOffset = $(data.iframeSelector).offset().top | 0;
+ 
+          
+ 
+          $("html, body").animate({
+ 
+                scrollTop: iframeOffset + data.topPosition
+ 
+          }, 500);
+ 
+          break;
+ 
+          
+ 
+        case 'resize':    
+ 
+          console.log('resize iframe', data);
+ 
+          $('.section.iframe iframe').animate({
+ 
+                height: data.height
+ 
+          }, 500);
+ 
+          break;
+ 
+          
+ 
+        case 'scrolltopiframe':
+ 
+          return iframeListener({"data": JSON.stringify(
+ 
+            {"type": "scrollparentwindow", "iframeSelector": '.section.iframe iframe', "topPosition": 0}
+ 
+          )})
+ 
+          
+ 
+      }
+ 
+    }
+ 
+  }
+ 
+ 
+  
+ 
+   $(function(){
+ 
+                window.addEventListener ? addEventListener("message", iframeListener, !1) : attachEvent("onmessage", iframeListener);
+ 
+     
+ 
+     document.querySelector('.section.iframe iframe').contentWindow.postMessage("need_height", '*');
+ 
+     
+ 
+  });
+ 
+  
+ 
+                window.iframeListener = iframeListener;
+ 
+</script>
+ 
+ 
+ 
+ 
+ 
+Второй:
+ 
+ 
+ 
+<script type="text/javascript">
+ 
+  
+ 
+  function listener_duster_dakar(event) {
+ 
+  if (event.origin != 'https://live.renault.ru') {
+ 
+console.log('w o '+event.origin);
+ 
+    return;
+ 
+  }
+ 
+  if ( event.data == 'fgvry85449_duster_dakar_link1_click' ) document.location.href='https://www.renault.ru/vehicles/range/duster/showroom.html';
+ 
+  if ( event.data == 'fgvry85449_duster_dakar_link2_click' ) document.location.href='https://www.renault.ru/contact-credit-specialist.html?MODEL=Renault%20DUSTER';    
+ 
+    
+ 
+}    
+ 
+ 
+ 
+  $(function()
+ 
+    {
+ 
+    
+ 
+      $('iframe').on('load',function(){ console.log('iframe src'); window.scroll(0,0);  } );
+ 
+ 
+ 
+    if (window.addEventListener) {
+ 
+  window.addEventListener("message", listener_duster_dakar);
+ 
+} else {
+ 
+  // IE8
+ 
+  window.attachEvent("onmessage", listener_duster_dakar);
+ 
+}
+ 
+    
+ 
+  }
+ 
+    );
+ 
+  
+ 
+</script>
+ 
