@@ -2820,6 +2820,46 @@ html.ltie9 .checkbox label {
     content: none
 }
 
+.list--second {
+  padding-top: 8em;
+}
+
+.tab-header {
+  display: flex;
+  justify-content: center;
+}
+
+.tab-header__description {
+  text-align: center;
+}
+
+
+.button {
+  float: left;
+  display: inline;
+  background-color: white;
+  color: orange;
+  border: 2px solid #d3d3d3;
+  border-bottom: none;
+
+  font-weight: bold;
+  padding: 10px 55px;
+  margin: 0;
+}
+
+.button--active {
+  color: #333;
+  border: 2px solid #d3d3d3;
+  border-bottom: 3px solid orange;
+
+} 
+
+.tab-slide--disabled {
+  height: 0;
+  overflow-y: hidden;
+}
+
+
 .c_001 > .cta-list a:after, .c_001B > .cta-list a:after {
     content: "";
     color: #000;
