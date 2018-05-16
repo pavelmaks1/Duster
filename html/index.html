@@ -562,11 +562,21 @@
         <div class="link-zone">
           <div class="columns">
             <div class="columns column columns66 section">
+              <div class="col-12">
+                <div class="c_206">
               <div class="grid-row carousel-section">
                 <div class="c_004 c_029 tab-header">
                   <div class="btn-group">
-                    <button data-val="first" class="button button--active" id="first_button">Rally Dakar 2017</button>
-                    <button data-val="second" class="button" id="second_button">Rally Dakar 2018</button>
+                    <button data-val="first" class="button button--active" id="first_button">
+                      <span class="button-content button-underline">
+                        Rally Dakar 2017
+                      </span>
+                    </button>
+                    <button data-val="second" class="button" id="second_button">
+                      <span class="button-content">
+                        Rally Dakar 2018
+                      </span>
+                    </button>
                   </div>
                 </div>
 
@@ -611,7 +621,9 @@
                       <div class="section">
                         <div class="c_029">
                           <div class="heading-group xl-size line-h">
-                            <h2><span> Многодневный ралли-марафон «Дакар» пройден!</span></h2>
+                            <h2>
+                              <span> Многодневный ралли-марафон «Дакар» пройден!</span>
+                            </h2>
                           </div>
                           <div class="introduction">
                             <p class="line-h xl-size grey">15 дней и более 9 000 км бездорожья и песков Южной Америки штурмовали 143 мотоцикла и 46 квадроциклов,
@@ -711,6 +723,7 @@
                   const FIRST_SLIDE1 = document.getElementsByClassName('tab-slide1');
                   const SECOND_SLIDE1 = document.getElementsByClassName('tab-slide2');
 
+
                   // using template to get HTML-template and node to attach selector
 
                   FIRST_BUTTON.addEventListener('click', (e) => {
@@ -718,6 +731,9 @@
                     SECOND_BUTTON.classList.remove('button--active');
                     SECOND_SLIDE.classList.add('tab-slide--disabled');
                     FIRST_SLIDE.classList.remove('tab-slide--disabled');
+                    FIRST_BUTTON.children[0].classList.add('button-underline');
+                    SECOND_BUTTON.children[0].classList.remove('button-underline');
+
                     FIRST_SLIDE.setPosition();
                   });
 
@@ -726,6 +742,8 @@
                     FIRST_BUTTON.classList.remove('button--active');
                     SECOND_SLIDE.classList.remove('tab-slide--disabled');
                     FIRST_SLIDE.classList.add('tab-slide--disabled');
+                    SECOND_BUTTON.children[0].classList.add('button-underline');
+                    FIRST_BUTTON.children[0].classList.remove('button-underline');
                     $('.slick-slider').get(3).slick.setPosition();
 
                     // render()
@@ -736,6 +754,9 @@
 
 
               </div>
+              </div>
+              </div>
+
             </div>
           </div>
 
